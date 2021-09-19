@@ -30,6 +30,7 @@ services:
     restart: on-failure
     volumes:
       - $PWD:/var/www/html
+      - $PWD/default.conf:/etc/nginx/conf.d/
     ports:
       - "80:80"
     depends_on:
