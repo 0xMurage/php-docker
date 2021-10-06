@@ -12,7 +12,7 @@ RUN apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev lib
   && docker-php-ext-install -j${nproc} gd \
   && apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
 
-
+COPY storage /var/www/html/storage
 
 EXPOSE 9000
 CMD ["php-fpm"]
