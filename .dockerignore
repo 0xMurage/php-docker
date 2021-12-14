@@ -1,0 +1,6 @@
+composer/
+.git/
+.vscode/
+examples
+build-base.sh
+build-compose.sh

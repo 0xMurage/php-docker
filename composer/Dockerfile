@@ -1,4 +1,5 @@
-FROM mimidots/php7.4.23-fpm-alpine
+ARG VERSION
+FROM mimidots/php7.4:$VERSION-alpine
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY --from=composer  /docker-entrypoint.sh  /docker-entrypoint.sh
