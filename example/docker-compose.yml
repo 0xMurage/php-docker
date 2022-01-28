@@ -1,9 +1,10 @@
 version: "3.8"
+
 services:
-  lavapp:
-    image: mimidots/php7.4:1.0.0-alpine
+  app:
+    image: ${IMAGE?err}
     volumes:
-      - $PWD/site:/var/www/html/site
+      - $PWD/site:/var/www/html
     restart: on-failure
     ports:
       - "9000"
@@ -13,21 +14,20 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - demolav #place them on same network to allow us to call it by the service name
+      - phpdemo
 
-  server:
+  nginx:
     image: nginx:alpine
     ports:
       - "80:80"
     volumes:
       - $PWD/nginx.conf:/etc/nginx/conf.d/default.conf
-      - $PWD/site:/var/www/html/site/
+      - $PWD/site:/var/www/html/
     depends_on:
-      - lavapp
+      - app
     networks:
-      - demolav
+      - phpdemo
 
 networks:
-  demolav:
-    name: demolav
+  phpdemo:
     driver: bridge
