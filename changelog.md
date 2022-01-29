@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/mimidotsuser/php-docker/compare/v1.0.0...v1.0.1) (2022-01-29)
+
+
+### Bug Fixes
+
+* force build of images ([9293c20](https://github.com/mimidotsuser/php-docker/commit/9293c203002e391db0183a3ab260a6ed44321f35))
+
 # 1.0.0 (2022-01-29)
 
 
