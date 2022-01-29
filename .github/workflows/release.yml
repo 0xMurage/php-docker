@@ -24,7 +24,7 @@ jobs:
             @semantic-release/git
   release:
     needs: sematic_release
-    if: needs.sematic_release.outputs.has_published == 'true #only if there is a new release
+    if: needs.sematic_release.outputs.has_published == 'true' #only if there is a new release
     name: Build and release
     runs-on: ubuntu-latest
     steps:
@@ -43,7 +43,7 @@ jobs:
           echo "::set-output name=exitCode::${RETUN_CODE}"
 
       - name: Build PHP 74 image
-        if: steps.php74check.exitCode == 0
+        if: steps.php74check.exitCode == 1
         uses: ./.github/actions/build-images
         with:
           tag: ${{secrets.DOCKER_USERNAME}}/php7.4:${{needs.sematic_release.outputs.version}}
@@ -52,7 +52,7 @@ jobs:
           token: ${{secrets.DOCKER_TOKEN}}
 
       - name: Build PHP 74 composer image
-        if: steps.php74check.exitCode == 0
+        if: steps.php74check.exitCode == 1
         uses: ./.github/actions/build-images
         with:
           tag: ${{secrets.DOCKER_USERNAME}}/php7.4-composer:${{needs.sematic_release.outputs.version}}
@@ -71,7 +71,7 @@ jobs:
           echo "::set-output name=exitCode::${RETUN_CODE}"
 
       - name: Build PHP 80 image
-        if: steps.php80check.exitCode == 0
+        if: steps.php80check.exitCode == 1
         uses: ./.github/actions/build-images
         with:
           tag: ${{secrets.DOCKER_USERNAME}}/php8.0:${{needs.sematic_release.outputs.version}}
@@ -80,7 +80,7 @@ jobs:
           token: ${{secrets.DOCKER_TOKEN}}
 
       - name: Build PHP 80 composer image
-        if: steps.php80check.exitCode == 0
+        if: steps.php80check.exitCode == 1
         uses: ./.github/actions/build-images
         with:
           tag: ${{secrets.DOCKER_USERNAME}}/php8.0-composer:${{needs.sematic_release.outputs.version}}
