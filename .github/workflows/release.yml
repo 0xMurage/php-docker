@@ -9,8 +9,8 @@ jobs:
     name: Semantic release
     runs-on: ubuntu-latest
     outputs:
-      has_published: ${{steps.semver.new_release_published}}
-      version: ${{steps.semver.new_release_version}}
+      has_published: ${{steps.semver.outputs.new_release_published}}
+      version: ${{steps.semver.outputs.new_release_version}}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
