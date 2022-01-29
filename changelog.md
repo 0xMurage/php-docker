@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/mimidotsuser/php-docker/compare/v1.0.3...v1.0.4) (2022-01-29)
+
+
+### Bug Fixes
+
+* docker build args not available ([e1c9859](https://github.com/mimidotsuser/php-docker/commit/e1c9859066f54b556a4445cc69ef3c24fb9e6f25))
+
 ## [1.0.3](https://github.com/mimidotsuser/php-docker/compare/v1.0.2...v1.0.3) (2022-01-29)
 
 
