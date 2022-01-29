@@ -39,8 +39,8 @@ jobs:
         id: php74check
         run: |
           git diff  --quiet HEAD^ HEAD php7.4
-          d=$?
-          echo "::set-output name=exitCode::true"
+          RETUN_CODE=$?
+          echo "::set-output name=exitCode::${RETUN_CODE}"
 
       - name: Build PHP 74 image
         if: steps.php74check.exitCode == 0
@@ -67,8 +67,8 @@ jobs:
         id: php80check
         run: |
           git diff  --quiet HEAD^ HEAD php8.0
-          d=$?
-          echo "::set-output name=exitCode::true"
+          RETUN_CODE=$?
+          echo "::set-output name=exitCode::${RETUN_CODE}"
 
       - name: Build PHP 80 image
         if: steps.php80check.exitCode == 0
