@@ -14,4 +14,5 @@ RUN docker-php-ext-install pdo pdo_mysql bcmath exif
 
 EXPOSE 9000
 
+
 CMD ["php-fpm"]
