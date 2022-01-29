@@ -1,0 +1,91 @@
+name: CI/CD
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sematic_release:
+    name: Semantic release
+    runs-on: ubuntu-latest
+    outputs:
+      has_published: ${{steps.semver.new_release_published}}
+      version: ${{steps.semver.new_release_version}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Semantic Release
+        id: semver
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+  release:
+    needs: sematic_release
+    if: needs.sematic_release.outputs.has_published == 'true #only if there is a new release
+    name: Build and release
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      #PHP 7.4
+      - name: Check if to build 74 image
+        id: php74check
+        run: |
+          git diff  --quiet HEAD^ HEAD php7.4
+          d=$?
+          echo "::set-output name=exitCode::true"
+
+      - name: Build PHP 74 image
+        if: steps.php74check.exitCode == 0
+        uses: ./.github/actions/build-images
+        with:
+          tag: ${{secrets.DOCKER_USERNAME}}/php7.4:${{needs.sematic_release.outputs.version}}
+          file: ./php7.4/Dockerfile
+          username: ${{secrets.DOCKER_USERNAME}}
+          token: ${{secrets.DOCKER_TOKEN}}
+
+      - name: Build PHP 74 composer image
+        if: steps.php74check.exitCode == 0
+        uses: ./.github/actions/build-images
+        with:
+          tag: ${{secrets.DOCKER_USERNAME}}/php7.4-composer:${{needs.sematic_release.outputs.version}}
+          file: ./composer/Dockerfile
+          username: ${{secrets.DOCKER_USERNAME}}
+          token: ${{secrets.DOCKER_TOKEN}}
+          build_args: |
+            BASE_IMAGE=${{secrets.DOCKER_USERNAME}}/php7.4:${{needs.sematic_release.outputs.version}}
+
+      # PHP 8.0
+      - name: Check if to build 80 image
+        id: php80check
+        run: |
+          git diff  --quiet HEAD^ HEAD php8.0
+          d=$?
+          echo "::set-output name=exitCode::true"
+
+      - name: Build PHP 80 image
+        if: steps.php80check.exitCode == 0
+        uses: ./.github/actions/build-images
+        with:
+          tag: ${{secrets.DOCKER_USERNAME}}/php8.0:${{needs.sematic_release.outputs.version}}
+          file: ./php8.0/Dockerfile
+          username: ${{secrets.DOCKER_USERNAME}}
+          token: ${{secrets.DOCKER_TOKEN}}
+
+      - name: Build PHP 80 composer image
+        if: steps.php80check.exitCode == 0
+        uses: ./.github/actions/build-images
+        with:
+          tag: ${{secrets.DOCKER_USERNAME}}/php8.0-composer:${{needs.sematic_release.outputs.version}}
+          file: ./composer/Dockerfile
+          username: ${{secrets.DOCKER_USERNAME}}
+          token: ${{secrets.DOCKER_TOKEN}}
+          build_args: |
+            BASE_IMAGE=${{secrets.DOCKER_USERNAME}}/php8.0:${{needs.sematic_release.outputs.version}}
