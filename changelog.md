@@ -1,0 +1,22 @@
+# 1.0.0 (2022-01-29)
+
+
+### Bug Fixes
+
+* cron script not executable ([4558571](https://github.com/mimidotsuser/php-docker/commit/45585712e6967173d377d34e62d2104993d06546))
+* invalid current directory variable rep ([a3c3eb0](https://github.com/mimidotsuser/php-docker/commit/a3c3eb07583e47f7caa6ea84db82697f809f1595))
+* invalid network config ([8149f86](https://github.com/mimidotsuser/php-docker/commit/8149f86b8a44c92b33ab9ed8a82e311dcacf00f3))
+* nginx config mounted incorrectly ([0fc6eed](https://github.com/mimidotsuser/php-docker/commit/0fc6eed559ea4c140dd9f9d17635b69830201de4))
+* nginx config not utilized ([5704c60](https://github.com/mimidotsuser/php-docker/commit/5704c601a3e2fb46d2c5409154f1e37e01a715e5))
+* refactor as buildX does not delete existing layers. ([7406653](https://github.com/mimidotsuser/php-docker/commit/7406653e1a86d2ad7c102c6a3c5c771a68bc7d98))
+* remove unused cron script args ([cf78203](https://github.com/mimidotsuser/php-docker/commit/cf78203eef3607fbbc35c9624c0a809815bcbfc2))
+
+
+### Features
+
+* add composer docker infra setup config ([c843060](https://github.com/mimidotsuser/php-docker/commit/c84306084eeaff66329be851aa187f18d2005d17))
+* add default storage folder ([97fd702](https://github.com/mimidotsuser/php-docker/commit/97fd702d28b195e74111e420aabe4725f86eceb5))
+* add missing cron script ([b908fbe](https://github.com/mimidotsuser/php-docker/commit/b908fbee30728cf8e6be56593d62f421dd772f8f))
+* add PHP 8.0 docker build config ([9355d2c](https://github.com/mimidotsuser/php-docker/commit/9355d2c6666caf7ed6f29ba99359c675cbd9c127))
+* add php-4 docker & docker-composer base infra config ([991554a](https://github.com/mimidotsuser/php-docker/commit/991554a125689ebb3b3b5d211ee14e5083a33ea1))
+* update php version ([d089e56](https://github.com/mimidotsuser/php-docker/commit/d089e564e32517a51f30a7587a70ccfdf167ca06))
