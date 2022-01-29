@@ -19,7 +19,7 @@ inputs:
   tag:
     description: 'The tag for the docker image'
     required: true
-  build-args:
+  build_args:
     description: 'Docker build args'
     required: false
 
@@ -43,4 +43,4 @@ runs:
         file: ${{inputs.file}}
         push: true
         tags: ${{ inputs.tags }}
-        build-args: ${{ inputs.build-args }}
+        build-args: ${{ inputs.build_args }}
