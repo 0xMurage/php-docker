@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/mimidotsuser/php-docker/compare/v1.0.1...v1.0.2) (2022-01-29)
+
+
+### Bug Fixes
+
+* force trigger docker build ([f26e105](https://github.com/mimidotsuser/php-docker/commit/f26e1054fdd9e0895f858f167f5a6c3b0544c270))
+
 ## [1.0.1](https://github.com/mimidotsuser/php-docker/compare/v1.0.0...v1.0.1) (2022-01-29)
 
 
