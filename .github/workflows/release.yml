@@ -22,6 +22,9 @@ jobs:
           extra_plugins: |
             @semantic-release/changelog
             @semantic-release/git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   release:
     needs: sematic_release
     if: needs.sematic_release.outputs.has_published == 'true' #only if there is a new release
@@ -39,8 +42,8 @@ jobs:
         id: php74check
         run: |
           git diff  --quiet HEAD^ HEAD php7.4
-          RETUN_CODE=$?
-          echo "::set-output name=exitCode::${RETUN_CODE}"
+          RETURN_CODE=$?
+          echo "::set-output name=exitCode::${RETURN_CODE}"
 
       - name: Build PHP 74 image
         if: steps.php74check.exitCode == 1
@@ -67,8 +70,8 @@ jobs:
         id: php80check
         run: |
           git diff  --quiet HEAD^ HEAD php8.0
-          RETUN_CODE=$?
-          echo "::set-output name=exitCode::${RETUN_CODE}"
+          RETURN_CODE=$?
+          echo "::set-output name=exitCode::${RETURN_CODE}"
 
       - name: Build PHP 80 image
         if: steps.php80check.exitCode == 1

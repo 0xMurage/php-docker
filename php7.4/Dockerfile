@@ -2,6 +2,7 @@ FROM php:7.4.27-fpm-alpine3.15
 
 WORKDIR /var/www/html
 
+#install GD
 RUN apk add --no-cache freetype libpng libjpeg-turbo   \
   && apk add --virtual build-deps freetype-dev libpng-dev libjpeg-turbo-dev \
   && docker-php-ext-configure gd  --with-freetype=/usr/include/  --with-jpeg=/usr/include/ \
