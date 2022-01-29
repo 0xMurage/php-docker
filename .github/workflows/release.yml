@@ -47,10 +47,21 @@ jobs:
         if: steps.phpcheck.outputs.php74 == 'true'
         uses: ./.github/actions/build-images
         with:
-          tag: ${{secrets.DOCKER_USERNAME}}/php7.4:${{needs.sematic_release.outputs.version}}
+          tags: ${{secrets.DOCKER_USERNAME}}/php7.4:${{needs.sematic_release.outputs.version}}
           file: ./php7.4/Dockerfile
           username: ${{secrets.DOCKER_USERNAME}}
           token: ${{secrets.DOCKER_TOKEN}}
+
+      - name: Build PHP 7.5 composer image
+        if: steps.phpcheck.outputs.php74 == 'true'
+        uses: ./.github/actions/build-images
+        with:
+          tags: ${{secrets.DOCKER_USERNAME}}/php7.4-composer:${{needs.sematic_release.outputs.version}}
+          file: ./composer/Dockerfile
+          username: ${{secrets.DOCKER_USERNAME}}
+          token: ${{secrets.DOCKER_TOKEN}}
+          build_args: |
+            BASE_IMAGE=${{secrets.DOCKER_USERNAME}}/php7.4:${{needs.sematic_release.outputs.version}}
 
   release_8x:
     needs: sematic_release
@@ -74,7 +85,7 @@ jobs:
         if: steps.phpcheck.outputs.php80 == 'true'
         uses: ./.github/actions/build-images
         with:
-          tag: ${{secrets.DOCKER_USERNAME}}/php8.0:${{needs.sematic_release.outputs.version}}
+          tags: ${{secrets.DOCKER_USERNAME}}/php8.0:${{needs.sematic_release.outputs.version}}
           file: ./php8.0/Dockerfile
           username: ${{secrets.DOCKER_USERNAME}}
           token: ${{secrets.DOCKER_TOKEN}}
@@ -83,7 +94,7 @@ jobs:
         if: steps.phpcheck.outputs.php80 == 'true'
         uses: ./.github/actions/build-images
         with:
-          tag: ${{secrets.DOCKER_USERNAME}}/php8.0-composer:${{needs.sematic_release.outputs.version}}
+          tags: ${{secrets.DOCKER_USERNAME}}/php8.0-composer:${{needs.sematic_release.outputs.version}}
           file: ./composer/Dockerfile
           username: ${{secrets.DOCKER_USERNAME}}
           token: ${{secrets.DOCKER_TOKEN}}
