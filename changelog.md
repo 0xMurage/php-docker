@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/mimidotsuser/php-docker/compare/v1.0.2...v1.0.3) (2022-01-29)
+
+
+### Bug Fixes
+
+* build docker action requires tag ([54429dc](https://github.com/mimidotsuser/php-docker/commit/54429dc7c197f162da7e12bf5dec47ad2bad489b))
+* trigger build ([83e4218](https://github.com/mimidotsuser/php-docker/commit/83e42182b0c62855798baf2dc3c3bf063e113e02))
+
 ## [1.0.2](https://github.com/mimidotsuser/php-docker/compare/v1.0.1...v1.0.2) (2022-01-29)
 
 
