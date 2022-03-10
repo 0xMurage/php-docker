@@ -1,4 +1,4 @@
-FROM php:7.4.27-fpm-alpine3.15
+FROM php:7.4.28-fpm-alpine3.15
 
 WORKDIR /var/www/html
 
@@ -10,7 +10,9 @@ RUN apk add --no-cache freetype libpng libjpeg-turbo   \
   && docker-php-ext-install -j${nproc} gd \
   && apk del build-deps
 
-RUN docker-php-ext-install pdo pdo_mysql bcmath exif sockets
+RUN docker-php-ext-install pdo pdo_mysql bcmath exif
+RUN CFLAGS="$CFLAGS -D_GNU_SOURCE" docker-php-ext-install sockets
+
 
 EXPOSE 9000
 
