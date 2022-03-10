@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/mimidotsuser/php-docker/compare/v1.0.4...v1.1.0) (2022-03-10)
+
+
+### Features
+
+* enable sockets extension ([88b01df](https://github.com/mimidotsuser/php-docker/commit/88b01df9348a5fe08d1789b6935ad74cbd15fdae))
+
 ## [1.0.4](https://github.com/mimidotsuser/php-docker/compare/v1.0.3...v1.0.4) (2022-01-29)
 
 
