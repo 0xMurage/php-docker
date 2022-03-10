@@ -10,7 +10,7 @@ RUN apk add --no-cache freetype libpng libjpeg-turbo   \
   && docker-php-ext-install -j${nproc} gd \
   && apk del build-deps
 
-RUN docker-php-ext-install pdo pdo_mysql bcmath exif
+RUN docker-php-ext-install pdo pdo_mysql bcmath exif sockets
 
 EXPOSE 9000
 
