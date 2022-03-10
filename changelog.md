@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/mimidotsuser/php-docker/compare/v1.1.0...v1.1.1) (2022-03-10)
+
+
+### Bug Fixes
+
+* failing to build sockets ([c313084](https://github.com/mimidotsuser/php-docker/commit/c313084a8bed31e79842d8a627f8346f23df1c60))
+
 # [1.1.0](https://github.com/mimidotsuser/php-docker/compare/v1.0.4...v1.1.0) (2022-03-10)
 
 
