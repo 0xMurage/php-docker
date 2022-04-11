@@ -12,6 +12,9 @@ RUN apk add --no-cache freetype libpng libjpeg-turbo   \
 
 RUN docker-php-ext-install pdo pdo_mysql bcmath exif sockets
 
+RUN apk add --no-cache zip libzip-dev && docker-php-ext-configure zip \
+    && docker-php-ext-install zip
+
 EXPOSE 9000
 
 CMD ["php-fpm"]
