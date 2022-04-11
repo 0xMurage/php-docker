@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/mimidotsuser/php-docker/compare/v1.1.1...v1.2.0) (2022-04-11)
+
+
+### Features
+
+* enable zip extension ([4c2ba76](https://github.com/mimidotsuser/php-docker/commit/4c2ba760afc35ef67901e3f380c61bc8282b1bf1))
+
 ## [1.1.1](https://github.com/mimidotsuser/php-docker/compare/v1.1.0...v1.1.1) (2022-03-10)
 
 
