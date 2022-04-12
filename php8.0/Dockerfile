@@ -15,6 +15,11 @@ RUN docker-php-ext-install pdo pdo_mysql bcmath exif sockets
 RUN apk add --no-cache libzip-dev && docker-php-ext-configure zip \
     && docker-php-ext-install zip
 
+
+RUN apk add --no-cache  zlib-dev icu-dev  && docker-php-ext-configure intl \
+      && docker-php-ext-install intl
+
+
 EXPOSE 9000
 
 CMD ["php-fpm"]
