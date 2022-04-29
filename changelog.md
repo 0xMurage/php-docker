@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/mimidotsuser/php-docker/compare/v1.3.0...v1.4.0) (2022-04-29)
+
+
+### Features
+
+* add php 8.1 image config ([a97a771](https://github.com/mimidotsuser/php-docker/commit/a97a771d0bbd1d604968e59b5714553db7320173))
+
 # [1.3.0](https://github.com/mimidotsuser/php-docker/compare/v1.2.0...v1.3.0) (2022-04-12)
 
 
