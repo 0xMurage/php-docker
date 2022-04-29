@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/mimidotsuser/php-docker/compare/v1.2.0...v1.3.0) (2022-04-12)
+
+
+### Features
+
+* add support for internalization package ([67f225a](https://github.com/mimidotsuser/php-docker/commit/67f225acc42b0113d7c70d73c1fe9ddda723f7d3))
+* remove unnecessary library install ([11e5480](https://github.com/mimidotsuser/php-docker/commit/11e5480bd47c8e2124755619c4e58b1cb0a963bc))
+
 # [1.2.0](https://github.com/mimidotsuser/php-docker/compare/v1.1.1...v1.2.0) (2022-04-11)
 
 
