@@ -63,10 +63,10 @@ jobs:
           build_args: |
             BASE_IMAGE=${{secrets.DOCKER_USERNAME}}/php7.4:${{needs.sematic_release.outputs.version}}
 
-  release_8x:
+  release_80:
     needs: sematic_release
     if: needs.sematic_release.outputs.has_published == 'true' #only if there is a new release
-    name: Build and release for PHP 8.x
+    name: Build and release for PHP 8.0
     runs-on: ubuntu-latest
     steps:
 
@@ -100,3 +100,40 @@ jobs:
           token: ${{secrets.DOCKER_TOKEN}}
           build_args: |
             BASE_IMAGE=${{secrets.DOCKER_USERNAME}}/php8.0:${{needs.sematic_release.outputs.version}}
+  release_81:
+    needs: sematic_release
+    if: needs.sematic_release.outputs.has_published == 'true' #only if there is a new release
+    name: Build and release for PHP 8.1
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Check which image to build
+        id: phpcheck
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            php81:
+              - 'php8.1/**'
+
+      - name: Build PHP 81 image
+        if: steps.phpcheck.outputs.php81 == 'true'
+        uses: ./.github/actions/build-images
+        with:
+          tags: ${{secrets.DOCKER_USERNAME}}/php8.1:${{needs.sematic_release.outputs.version}}
+          file: ./php8.1/Dockerfile
+          username: ${{secrets.DOCKER_USERNAME}}
+          token: ${{secrets.DOCKER_TOKEN}}
+
+      - name: Build PHP 81 composer image
+        if: steps.phpcheck.outputs.php81 == 'true'
+        uses: ./.github/actions/build-images
+        with:
+          tags: ${{secrets.DOCKER_USERNAME}}/php8.1-composer:${{needs.sematic_release.outputs.version}}
+          file: ./composer/Dockerfile
+          username: ${{secrets.DOCKER_USERNAME}}
+          token: ${{secrets.DOCKER_TOKEN}}
+          build_args: |
+            BASE_IMAGE=${{secrets.DOCKER_USERNAME}}/php8.1:${{needs.sematic_release.outputs.version}}
